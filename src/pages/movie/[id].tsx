@@ -4,7 +4,7 @@ import {IMovie} from "@/types/Types";
 import MainContainer from "@/components/MainContainer";
 import Image from 'next/image'
 
-export default function ({movie}: {movie: IMovie}) {
+export default function Movie({movie}: {movie: IMovie}) {
     return (
         <MainContainer keywords={'want to work'}>
             <div className="flex flex-col items-center justify-center h-screen">
