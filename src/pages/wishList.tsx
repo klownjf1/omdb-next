@@ -2,6 +2,7 @@ import { Search } from '@/types/Types';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import MainContainer from '@/components/MainContainer';
+import Image from 'next/image'
 
 const WishList = () => {
     let wishList;
@@ -20,8 +21,8 @@ const WishList = () => {
                 <Link href={`/movie/${item.imdbID}`} className="mt-2 text-gray-900" >
                     <div className="h-96 w-5/6">
 
-                        <img
-                            src={item.Poster}
+                        <Image
+                            src={`${item.Poster}`}
                             alt=""
                             className="object-cover w-full h-full rounded-lg shadow-md"
                         />

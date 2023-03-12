@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import Paginator from "@/components/Paginator";
 import MainContainer from "@/components/MainContainer";
+import Image from 'next/image'
 
 export default function Movies({ movies }: { movies: IMovies }) {
     const handleAddToWishList = (movie: Search) => {
@@ -31,8 +32,8 @@ export default function Movies({ movies }: { movies: IMovies }) {
                 <Link href={`/movie/${item.imdbID}`} className="mt-2 text-gray-900" >
                     <div className="h-96 w-5/6">
 
-                            <img
-                                src={item.Poster}
+                            <Image
+                                src={`${item.Poster}`}
                                 alt=""
                                 className="object-cover w-full h-full rounded-lg shadow-md"
                             />

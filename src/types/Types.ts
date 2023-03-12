@@ -31,7 +31,7 @@ export interface IMovie{
     Language: string,
     Metascore: string,
     Plot: string,
-    Poster: string,
+    Poster?: string,
     Production: string,
     Rated:string,
     Ratings: Ratings[],

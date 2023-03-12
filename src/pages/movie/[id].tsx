@@ -2,13 +2,14 @@ import {apikey} from "@/apikey/apikey";
 import {GetServerSideProps} from "next";
 import {IMovie} from "@/types/Types";
 import MainContainer from "@/components/MainContainer";
+import Image from 'next/image'
 
-export default function<FC>({movie}: {movie: IMovie}) {
+export default function ({movie}: {movie: IMovie}) {
     return (
         <MainContainer keywords={'want to work'}>
             <div className="flex flex-col items-center justify-center h-screen">
                 <div className="w-2/3 sm:w-1/2 md:w-1/3">
-                    <img src={movie.Poster} alt=""/>
+                    <Image src={`${movie.Poster}`} alt=""/>
                     <h1 className="text-xl font-bold mt-4">{movie.Title}</h1>
                     <p className="mt-2"><span className="font-bold">Type:</span> {movie.Type}</p>
                     <p><span className="font-bold">Year:</span> {movie.Year}</p>
