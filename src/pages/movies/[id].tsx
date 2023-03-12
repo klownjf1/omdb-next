@@ -36,6 +36,8 @@ export default function Movies({ movies }: { movies: IMovies }) {
                                 src={`${item.Poster}`}
                                 alt=""
                                 className="object-cover w-full h-full rounded-lg shadow-md"
+                                width={300}
+                                height={400}
                             />
 
                     </div>
