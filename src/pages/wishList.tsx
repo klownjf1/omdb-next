@@ -15,7 +15,7 @@ const WishList = () => {
         }
     }, []);
 
-
+    if(myData){
         wishList = myData.map((item) => (
             <div className="p-4 flex flex-col" key={item.imdbID}>
                 <Link href={`/movie/${item.imdbID}`} className="mt-2 text-gray-900" >
@@ -35,6 +35,7 @@ const WishList = () => {
 
             </div>
         ));
+    }
 
 
     return (
