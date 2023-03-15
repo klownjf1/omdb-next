@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { ChangeEvent, FC, PropsWithChildren, useState } from 'react';
+import {useRouter} from "next/router";
 
 interface Props extends PropsWithChildren{
     keywords: string;
@@ -8,10 +9,18 @@ interface Props extends PropsWithChildren{
 
 const MainContainer:FC<Props> = ({children, keywords}) => {
     const [value, setValue] = useState<string>('');
+    const router = useRouter()
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const inputElement = e.target as HTMLInputElement;
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            router.push(`/movies/${inputElement.value}?page=${1}`)
+        }
+    }
 
     return (
         <>
@@ -52,6 +61,7 @@ const MainContainer:FC<Props> = ({children, keywords}) => {
                                         onChange={handleInputChange}
                                         className="px-3 py-2 border rounded-md text-black"
                                         placeholder="Search..."
+                                        onKeyDown={onKeyDownHandler}
                                     />
                                 </label>
 

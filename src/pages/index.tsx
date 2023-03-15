@@ -1,13 +1,26 @@
 import { ChangeEvent, useState } from "react";
 import Link from "next/link";
 import MainContainer from "@/components/MainContainer";
+import {useRouter} from "next/router";
 
 export default function Home() {
     const [inputValue, setInputValue] = useState<string>("");
+    const router = useRouter()
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
+
+
+    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const inputElement = e.target as HTMLInputElement;
+
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            router.push(`/movies/${inputElement.value}?page=${1}`)
+        }
+
+    }
 
     return (
         <MainContainer keywords={'want to work'}>
@@ -21,6 +34,7 @@ export default function Home() {
                             onChange={handleInputChange}
                             className="px-3 py-2 border rounded-md"
                             placeholder='Search...'
+                            onKeyDown={onKeyDownHandler}
                         />
                     </label>
                     <Link href={`/movies/${inputValue}?page=${1}`}>
